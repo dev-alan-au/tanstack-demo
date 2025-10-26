@@ -1,0 +1,40 @@
+# Define all services/containers in this stack
+services:
+
+  # PostgreSQL database service
+  db:
+    # Use official Postgres v16 image
+    image: postgres:16
+    # Automatically restart if it crashes
+    restart: always
+    # Set environment variables for the DB
+    env_file:
+      - .env
+    # Map container port 5432 to host port 5432
+    ports:
+      - '5432:5432'
+    # Persist data across container restarts
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # Node.js + Prisma backend service
+  api:
+    # Build the Docker image from the Dockerfile
+    build: ./
+    # Match Dockerfile WORKDIR
+    working_dir: /app
+    # Run database migrations first, then start the server
+    command: sh -c "npx prisma migrate deploy --schema=prisma/schema.prisma && npm run start"
+    # Environment variables for the API container
+    env_file:
+      - .env
+    # Ensure 'db' service starts before 'api'
+    depends_on:
+      - db
+    # Map Node.js port to host port
+    ports:
+      - '3000:3000'
+
+# Define named volumes for persistent storage
+volumes:
+  postgres_data:
