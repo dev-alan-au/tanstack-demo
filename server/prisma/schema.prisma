@@ -13,45 +13,50 @@ datasource db {
 // Models for Shoe Catalog
 //////////////////////////////
 
-// Each brand can have multiple shoes
-model Brand {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  country   String?
-  shoes     Shoe[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-// Categories (e.g., Sneakers, Boots, Sandals)
-model Category {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  shoes     Shoe[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-// The main Shoe model
 model Shoe {
-  id          Int        @id @default(autoincrement())
-  name        String
-  description String?
-  price       Float
-  brand       Brand      @relation(fields: [brandId], references: [id])
-  brandId     Int
-  category    Category   @relation(fields: [categoryId], references: [id])
-  categoryId  Int
-  sizes       ShoeSize[]
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  id          Int @id @default(autoincrement())
+  name        String @unique
 }
 
-// Sizes for shoes (many-to-many relationship)
-model ShoeSize {
-  id      Int   @id @default(autoincrement())
-  size    Float
-  stock   Int   @default(0)
-  shoe    Shoe  @relation(fields: [shoeId], references: [id])
-  shoeId  Int
-}
+// // Each brand can have multiple shoes
+// model Brand {
+//   id        Int      @id @default(autoincrement())
+//   name      String   @unique
+//   country   String?
+//   shoes     Shoe[]
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+// }
+
+// // Categories (e.g., Sneakers, Boots, Sandals)
+// model Category {
+//   id        Int      @id @default(autoincrement())
+//   name      String   @unique
+//   shoes     Shoe[]
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+// }
+
+// // The main Shoe model
+// model Shoe {
+//   id          Int        @id @default(autoincrement())
+//   name        String
+//   description String?
+//   price       Float
+//   brand       Brand      @relation(fields: [brandId], references: [id])
+//   brandId     Int
+//   category    Category   @relation(fields: [categoryId], references: [id])
+//   categoryId  Int
+//   sizes       ShoeSize[]
+//   createdAt   DateTime   @default(now())
+//   updatedAt   DateTime   @updatedAt
+// }
+
+// // Sizes for shoes (many-to-many relationship)
+// model ShoeSize {
+//   id      Int   @id @default(autoincrement())
+//   size    Float
+//   stock   Int   @default(0)
+//   shoe    Shoe  @relation(fields: [shoeId], references: [id])
+//   shoeId  Int
+// }

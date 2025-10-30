@@ -34,6 +34,8 @@ RUN npm ci --omit=dev
 
 # Copy the compiled JavaScript + Prisma client from builder stage
 COPY --from=builder /app/dist ./dist
+# TODO: move this to dev only
+COPY --from=builder /app/src ./src
 # Copy only generated Prisma client from builder stage
 COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 COPY --from=builder /app/prisma ./prisma

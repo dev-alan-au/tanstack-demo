@@ -24,7 +24,9 @@ services:
     # Match Dockerfile WORKDIR
     working_dir: /app
     # Run database migrations first, then start the server
-    command: sh -c "npx prisma migrate deploy --schema=prisma/schema.prisma && npm run start"
+    # TODO: split to override
+    # command: sh -c "npx prisma migrate deploy --schema=prisma/schema.prisma && npm run start"
+    command: sh -c "npx prisma generate && npx prisma migrate deploy --schema=prisma/schema.prisma && npm run dev"
     # Environment variables for the API container
     env_file:
       - .env
