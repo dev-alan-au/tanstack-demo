@@ -1,0 +1,12 @@
+
+services:
+  frontend:  # Name of the service
+    build:
+      context: ./  # Path to the folder containing the Dockerfile
+      dockerfile: Dockerfile  # Optional if your file is named 'Dockerfile'; here for clarity
+    container_name: client  # Name of the container for easier management
+    ports:
+      - "3001:80"  # Map host port 3000 → container port 80 (nginx default)
+    environment:
+      - NODE_ENV=production  # Set the environment variable inside the container
+    restart: unless-stopped  # Restart policy: always restart unless container is manually stopped

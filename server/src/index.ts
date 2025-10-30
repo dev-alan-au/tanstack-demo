@@ -5,9 +5,7 @@ import shoesList from "./routes/shoesList.js";
 import shoeView from "./routes/shoeView.js";
 
 const app = express();
-app.use(
-  cors({origin: [process.env.CLIENT_URL!]}),
-);
+app.use(cors({ origin: [process.env.CLIENT_URL!] }));
 app.use(express.json());
 app.use("/init", seedData);
 app.use("/", shoesList);
