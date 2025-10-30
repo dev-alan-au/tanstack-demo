@@ -3,15 +3,15 @@
 	"compilerOptions": {
 		// Environment Settings
 		// See also https://aka.ms/tsconfig/module
-		"target": "ES2020",          // Modern JS features
-    "module": "ESNext",          // Keeps ES module syntax
-    "moduleResolution": "node",  // Resolve imports like Node
-    "outDir": "./dist",            // Compiled JS output folder
-    "rootDir": "./src",            // Your TS source folder
-    "esModuleInterop": true,     // Allows default imports from CommonJS
+		"target": "ES2020", // Modern JS features
+		"module": "ESNext", // Keeps ES module syntax
+		"moduleResolution": "node", // Resolve imports like Node
+		"outDir": "./dist", // Compiled JS output folder
+		"rootDir": "./src", // Your TS source folder
+		"esModuleInterop": true, // Allows default imports from CommonJS
 		"forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true,
+		"strict": true,
+		"skipLibCheck": true,
 		// "types": [],
 		// For nodejs:
 		"lib": ["esnext"],
@@ -39,16 +39,16 @@
 		"verbatimModuleSyntax": true,
 		"isolatedModules": true,
 		"noUncheckedSideEffectImports": true,
-		"moduleDetection": "force",
+		"moduleDetection": "force"
 	},
 	"include": ["src/**/*"],
 	"ts-node": {
 		"esm": true, // Enable ESM support in ts-node
 		"transpileOnly": true,
-    "files": true,
-    // Tell ts-node CLI to install the --loader automatically, explained below
-    "compilerOptions": {
-      "module": "ESNext"
-    }
+		"files": true,
+		// Tell ts-node CLI to install the --loader automatically, explained below
+		"compilerOptions": {
+			"module": "ESNext"
+		}
 	}
 }
