@@ -1,9 +1,11 @@
 import express from "express";
+import seedData from "./routes/seedData.js";
 import shoesList from "./routes/shoesList.js";
 import shoeView from "./routes/shoeView.js";
 
 const app = express();
 app.use(express.json());
+app.use("/init", seedData);
 app.use("/", shoesList);
 app.use("/shoe/:id", shoeView);
 
